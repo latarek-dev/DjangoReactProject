@@ -1,0 +1,2 @@
+# DjangoReactProject
+Ultimate django app
