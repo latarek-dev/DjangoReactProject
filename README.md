@@ -1,2 +1,2 @@
 # DjangoReactProject
-Ultimate django app
+Web project for "Practical use of python" course
