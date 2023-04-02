@@ -4,12 +4,12 @@ import Header from "./header/Header";
 
 export default function Layout() {
   return (
-    <Grid container sx={{ height: "100%", margin: "0 auto" }}>
-      <Grid item flexDirection="column" xs={10} sx={{ pl: 4, pr: 4 }}>
-        <Grid>
+    <Grid container sx={{ height: "100%", width: "100%", margin: "0 auto" }}>
+      <Grid item sx={{ width: "100%" }}>
+        <Grid sx={{ width: "100%" }}>
           <Header />
         </Grid>
-        <Grid paddingBottom={4}>
+        <Grid paddingBottom={4} sx={{ width: "100%" }}>
           <Outlet />
         </Grid>
       </Grid>
