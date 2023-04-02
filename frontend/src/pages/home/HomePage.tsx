@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./HomePage.css";
+import SectionTitle from "../../components/layout/SectionTitle";
 
 export default function HomePage() {
   useEffect(() => {
@@ -9,7 +10,7 @@ export default function HomePage() {
   return (
     <section className="main">
       <div className="hero-container">
-        <h1>All posts</h1>
+        <SectionTitle name={"All posts"} />
       </div>
     </section>
   );

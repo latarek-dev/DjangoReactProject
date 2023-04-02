@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import { AccountCircle } from "@mui/icons-material";
 
 export default function Header() {
   return (
@@ -14,12 +13,10 @@ export default function Header() {
         <div className={styles.navigation}>
           <ul>
             <li>
-              <NavLink to="/">Data</NavLink>
+              <NavLink to="/login">Login</NavLink>
             </li>
             <li>
-              <NavLink to="/account">
-                <AccountCircle fontSize="medium" />
-              </NavLink>
+              <NavLink to="/signup">Sign Up</NavLink>
             </li>
           </ul>
         </div>
