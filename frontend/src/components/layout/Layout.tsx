@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import { Outlet } from "react-router-dom";
 import Header from "./header/Header";
+import Sidebar from "../shared/Sidebar";
 
 export default function Layout() {
   return (
@@ -8,6 +9,7 @@ export default function Layout() {
       <Grid item sx={{ width: "100%" }}>
         <Grid sx={{ width: "100%" }}>
           <Header />
+          <Sidebar />
         </Grid>
         <Grid paddingBottom={4} sx={{ width: "100%" }}>
           <Outlet />
