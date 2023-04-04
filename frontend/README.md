@@ -1,4 +1,4 @@
-# Frontend app for Practical use of python course in React + typescript
+# Frontend app for Practical use of python course in Django, React + typescript
 
 Libraries used:
 React Query
