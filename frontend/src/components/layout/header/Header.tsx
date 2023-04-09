@@ -13,6 +13,16 @@ export default function Header() {
         <div className={styles.navigation}>
           <ul>
             <li>
+              <NavLink to="/blog">Blog</NavLink>
+            </li>
+            <li>
+              <NavLink to="/maps">Maps</NavLink>
+            </li>
+          </ul>
+        </div>
+        <div className={styles.navigation}>
+          <ul>
+            <li>
               <NavLink to="/login">Login</NavLink>
             </li>
             <li>
