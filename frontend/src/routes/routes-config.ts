@@ -3,5 +3,6 @@ export const PROJECT_ROUTES = {
     DATA: "/data",
     PLACES: "/places",
     ACCOUNT: "/account",
-    SIGNUP: "/signup"
+    SIGNUP: "/signup",
+    LOGIN: "/login"
 }
