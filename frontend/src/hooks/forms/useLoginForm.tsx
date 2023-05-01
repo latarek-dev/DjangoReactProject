@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const validationSchema = Yup.object({
   login: Yup.string().required(),

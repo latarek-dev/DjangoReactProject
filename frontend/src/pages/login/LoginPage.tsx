@@ -1,4 +1,5 @@
 import { Box, Container } from "@mui/material";
+import LoginForm from "../../components/login/LoginForm";
 
 function LoginPage() {
   return (
@@ -8,11 +9,15 @@ function LoginPage() {
           marginTop={10}
           sx={{
             padding: {
-              xs: "16px",
+              xs: "10px",
               md: 8,
             },
             border: "1px solid",
-            borderRadius: "10px",
+            borderRadius: "8px",
+            display: "flex",
+            width: "100%",
+            alignContent: "center",
+            justifyContent: "center",
           }}
         >
           <LoginForm />
