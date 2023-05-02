@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLoginForm } from "../../hooks/forms/useLoginForm";
 import {
   Stack,
   TextField,
@@ -9,11 +8,13 @@ import {
   Button,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useSignUpForm } from "../../hooks/forms/useSignUpForm";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const [showRepPassword, setShowRepPassword] = useState(false);
 
-  const { register, handleSubmit, errors } = useLoginForm();
+  const { register, handleSubmit, errors } = useSignUpForm();
 
   return (
     <>
@@ -27,7 +28,7 @@ export default function LoginForm() {
           />
           <TextField
             {...register("password")}
-            autoComplete="current-password"
+            autoComplete="password"
             label="Password"
             error={!!errors.password}
             type={showPassword ? "text" : "password"}
@@ -45,8 +46,28 @@ export default function LoginForm() {
               ),
             }}
           />
+          <TextField
+            {...register("repeatPassword")}
+            autoComplete="repeatPassword"
+            label="Repeat Password"
+            error={!!errors.repeatPassword}
+            type={showRepPassword ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    edge="end"
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowRepPassword(!showRepPassword)}
+                  >
+                    {showRepPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
           <Box alignSelf="center">
-            <Button variant="contained">Login</Button>
+            <Button variant="contained">Sign Up</Button>
           </Box>
         </Stack>
       </Box>

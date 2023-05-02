@@ -8,12 +8,6 @@ function LoginPage() {
         <Box
           marginTop={10}
           sx={{
-            padding: {
-              xs: "10px",
-              md: 8,
-            },
-            border: "1px solid",
-            borderRadius: "8px",
             display: "flex",
             width: "100%",
             alignContent: "center",
