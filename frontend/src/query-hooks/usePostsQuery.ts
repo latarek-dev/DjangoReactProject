@@ -1,6 +1,6 @@
 
 import { useQuery } from "react-query";
-import { createAxiosInstance } from "../utils/createAxiosInstance";
+import { fetchData } from "./utils";
 
 
 export type BlogPost = {
@@ -9,14 +9,8 @@ export type BlogPost = {
     value: string;
 }
 
-const axios = createAxiosInstance()
-
 export const usePostsQuery = () => {
-    const queryFn = async () => {
-        const response = await axios.get("/posts")
-
-        return response.data;
-    }
+    const queryFn = fetchData("/posts")
 
     return useQuery({
         queryFn,

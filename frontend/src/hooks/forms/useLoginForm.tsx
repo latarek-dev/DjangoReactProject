@@ -7,14 +7,14 @@ const validationSchema = Yup.object({
   password: Yup.string().required(),
 });
 
-export type LoginForm = Yup.InferType<typeof validationSchema>;
+export type LoginFormType = Yup.InferType<typeof validationSchema>;
 
 export const useLoginForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>({
+  } = useForm<LoginFormType>({
     resolver: yupResolver(validationSchema),
     mode: "onChange",
   });
