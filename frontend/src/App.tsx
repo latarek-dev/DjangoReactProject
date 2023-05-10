@@ -1,10 +1,12 @@
-import "./App.css";
+import { AuthProvider } from "./providers/AuthProvider";
 import Router from "./routes/Router";
 
 function App() {
   return (
     <>
-      <Router />
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
     </>
   );
 }
