@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
+import { Stack } from "@mui/material";
 
 export default function Header() {
   return (
@@ -20,16 +21,14 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className={styles.navigation}>
-          <ul>
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="/signup">Sign Up</NavLink>
-            </li>
-          </ul>
-        </div>
+        <Stack direction="row" spacing={4} sx={{ pr: 2 }}>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </li>
+        </Stack>
       </div>
     </header>
   );

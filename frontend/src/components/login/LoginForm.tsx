@@ -9,15 +9,22 @@ import {
   Button,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useLoginQuery } from "../../query-hooks/useLoginQuery";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
 
   const { register, handleSubmit, errors } = useLoginForm();
 
+  const { mutate } = useLoginQuery();
+
   return (
     <>
-      <Box noValidate component="form">
+      <Box
+        noValidate
+        component="form"
+        onSubmit={handleSubmit((data) => mutate(data))}
+      >
         <Stack spacing={4} marginTop={6}>
           <TextField
             {...register("login")}
