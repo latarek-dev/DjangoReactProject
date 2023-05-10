@@ -7,3 +7,4 @@ Tanstack Query
 Axios
 React Hook Form
 Yup validation
+React toastify
