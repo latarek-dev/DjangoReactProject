@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useLoginForm } from "../../hooks/forms/useLoginForm";
 import {
   Stack,
   TextField,
@@ -14,17 +13,19 @@ import {
 import { useLoginQuery } from "../../query-hooks/useLoginQuery";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import ActionButton from "../shared/ActionButton";
-import { useNavigate } from "react-router-dom";
+import { useRegisterForm } from "../../hooks/forms/useRegisterForm";
 import { MAIN_ROUTES } from "../../routes/routes-config";
+import { useNavigate } from "react-router-dom";
 
-export default function LoginForm() {
+export default function RegisterForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [showRepPassword, setShowRepPassword] = useState(false);
 
-  const { register, handleSubmit, errors } = useLoginForm();
+  const { register, handleSubmit, errors } = useRegisterForm();
 
   const { mutate } = useLoginQuery();
-
+  console.log(errors);
   return (
     <>
       <Box
@@ -33,8 +34,15 @@ export default function LoginForm() {
         onSubmit={handleSubmit((data) => mutate(data))}
         sx={{ width: "80%" }}
       >
-        <StyledTypo>Login</StyledTypo>
+        <StyledTypo>Sign Up</StyledTypo>
         <Stack spacing={4} marginTop={6}>
+          <TextField
+            {...register("name")}
+            autoComplete="name"
+            label="Name"
+            error={!!errors.name}
+            helperText={errors.name?.message}
+          />
           <TextField
             {...register("login")}
             autoComplete="username"
@@ -63,8 +71,29 @@ export default function LoginForm() {
               ),
             }}
           />
+          <TextField
+            {...register("repeatPassword")}
+            autoComplete="current-password"
+            label="Password"
+            error={!!errors.repeatPassword}
+            type={showRepPassword ? "text" : "password"}
+            helperText={errors.repeatPassword?.message}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    edge="end"
+                    aria-label="toggle password visibility"
+                    onClick={() => setShowRepPassword(!showRepPassword)}
+                  >
+                    {showRepPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
           <Box alignSelf="center">
-            <ActionButton actionText="Login" variant="contained" />
+            <ActionButton actionText="Sign Up" variant="contained" />
           </Box>
           <Stack
             sx={{
@@ -73,12 +102,12 @@ export default function LoginForm() {
               alignItems: "center",
             }}
           >
-            <Typography>Don&apos;t have an account?</Typography>
+            <Typography>Already have an account?</Typography>
             <Link
               style={{ cursor: "pointer" }}
-              onClick={() => navigate(MAIN_ROUTES.SIGNUP)}
+              onClick={() => navigate(MAIN_ROUTES.LOGIN)}
             >
-              Sign Up!
+              Login!
             </Link>
           </Stack>
         </Stack>

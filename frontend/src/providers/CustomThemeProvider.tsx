@@ -5,7 +5,6 @@ export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
   const theme = createTheme({
     palette: {
       primary: {
-        dark: "#022b3a",
         main: "#edc786",
         light: "#000",
       },

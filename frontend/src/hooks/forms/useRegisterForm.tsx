@@ -2,10 +2,13 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+export const requiredMessage = "This field is required";
+
 const validationSchema = Yup.object({
-  login: Yup.string().required(),
-  password: Yup.string().required(),
-  repeatPassword: Yup.string().required(),
+  name: Yup.string().required(requiredMessage),
+  login: Yup.string().required(requiredMessage),
+  password: Yup.string().required(requiredMessage),
+  repeatPassword: Yup.string().required(requiredMessage),
 });
 
 export type RegisterFormType = Yup.InferType<typeof validationSchema>;

@@ -25,7 +25,7 @@ export default function HomePage() {
             />
             <ActionButton
               actionText="Sign Up"
-              onClickAction={() => navigate(MAIN_ROUTES.LOGIN)}
+              onClickAction={() => navigate(MAIN_ROUTES.SIGNUP)}
               variant="outlined"
             />
           </Stack>
