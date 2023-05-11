@@ -5,6 +5,7 @@ import Layout from "../components/layout/Layout";
 import LoginPage from "../pages/login/LoginPage";
 import HomePage from "../pages/homepage/HomePage";
 import RegisterPage from "../pages/register/RegisterPage";
+import NotesPage from "../pages/notespage/NotesPage";
 
 function Router() {
   return useRoutes([
@@ -23,6 +24,10 @@ function Router() {
         {
           path: MAIN_ROUTES.SIGNUP,
           element: <RegisterPage />,
+        },
+        {
+          path: MAIN_ROUTES.NOTES,
+          element: <NotesPage />,
         },
       ],
     },

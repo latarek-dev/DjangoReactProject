@@ -17,8 +17,8 @@ export default function AppHeader() {
           onClickAction={() => navigate(MAIN_ROUTES.LOGIN)}
         />
         <ActionButton
-          actionText="Blog"
-          onClickAction={() => navigate(MAIN_ROUTES.LOGIN)}
+          actionText="Notes"
+          onClickAction={() => navigate(MAIN_ROUTES.NOTES)}
         />
       </Stack>
     </StyledStack>

@@ -77,6 +77,7 @@ export default function LoginForm() {
             <Link
               style={{ cursor: "pointer" }}
               onClick={() => navigate(MAIN_ROUTES.SIGNUP)}
+              color={"#d8c9bc"}
             >
               Sign Up!
             </Link>

@@ -25,7 +25,6 @@ export default function RegisterForm() {
   const { register, handleSubmit, errors } = useRegisterForm();
 
   const { mutate } = useLoginQuery();
-  console.log(errors);
   return (
     <>
       <Box
@@ -106,6 +105,7 @@ export default function RegisterForm() {
             <Link
               style={{ cursor: "pointer" }}
               onClick={() => navigate(MAIN_ROUTES.LOGIN)}
+              color={"#d8c9bc"}
             >
               Login!
             </Link>
