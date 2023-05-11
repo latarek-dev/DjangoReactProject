@@ -6,14 +6,14 @@ export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
     palette: {
       primary: {
         dark: "#022b3a",
-        main: "#1F7A8C",
-        light: "#bfdbf7",
+        main: "#edc786",
+        light: "#000",
       },
       secondary: {
-        main: "#e1e5f2",
+        main: "#000",
       },
       text: {
-        primary: "#ffffff",
+        primary: "#000",
         secondary: "#000",
       },
     },
