@@ -2,21 +2,15 @@ from django.db import models
 
 
 # Create your models here.
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
 
+class User(models.Model):
+    username = models.CharField(max_length=50, unique=True, null=False)
+    email = models.EmailField(unique=True, null=False)
+    password = models.CharField(max_length=50, null=False)
+    first_name = models.CharField(max_length=50, null=False)
+    last_name= models.CharField(max_length=50, null=True)
+    date_of_birth = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-
-
-class Todo(models.Model):
-   title = models.CharField(max_length=100)
-   description = models.TextField()
-   completed = models.BooleanField(default=False)
-
-   def _str_(self):
-     return self.title
+    # class Meta:
+    #     db_table='polls_user'
