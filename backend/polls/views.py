@@ -1,21 +1,17 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-# from rest_framework import generics
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .models import User
-from .forms import UserRegistrationForm
+from .serializers import UserSerializer
+from rest_framework import generics
 
 
 # Create your views here.
 
-# class UserView(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-def register_user(request):
-    form = UserRegistrationForm()
-
-    return render(request, 'register.html', {'form': form})
+class UserView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 @api_view(['GET'])
 def hello(request):
