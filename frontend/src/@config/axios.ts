@@ -20,7 +20,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   error => {
-    toast.error(error.response.data.confirm_password[0], {
+    toast.error(error.response.data.username[0], {
       position: toast.POSITION.BOTTOM_RIGHT,
       autoClose: false,
     });

@@ -90,27 +90,6 @@ export default function RegisterForm() {
               ),
             }}
           />
-          <TextField
-            {...register("first_name")}
-            autoComplete="first_name"
-            label="First Name"
-            error={!!errors.first_name}
-            helperText={errors.first_name?.message}
-          />
-          <TextField
-            {...register("last_name")}
-            autoComplete="last_name"
-            label="Last Name"
-            error={!!errors.last_name}
-            helperText={errors.last_name?.message}
-          />
-          <TextField
-            {...register("date_of_birth")}
-            autoComplete="date_of_birth"
-            type="date"
-            error={!!errors.date_of_birth}
-            helperText={errors.date_of_birth?.message}
-          />
           <Box alignSelf="center">
             <ActionButton actionText="Sign Up" variant="contained" />
           </Box>

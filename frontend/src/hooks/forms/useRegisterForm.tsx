@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegisterMutation } from "../../query-hooks/useRegisterMutation";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { format } from "date-fns";
 
 export const requiredMessage = "This field is required";
 
@@ -13,11 +12,6 @@ const validationSchema = Yup.object({
   email: Yup.string().required(requiredMessage),
   password: Yup.string().required(requiredMessage),
   confirm_password: Yup.string().required(requiredMessage),
-  first_name: Yup.string().required(requiredMessage),
-  last_name: Yup.string().required(requiredMessage),
-  date_of_birth: Yup.date()
-    .required(requiredMessage)
-    .transform((date) => new Date(format(date, "yyyy-MM-dd"))),
 });
 
 export type RegisterFormType = Yup.InferType<typeof validationSchema>;
@@ -28,7 +22,10 @@ export const useRegisterForm = () => {
   const { mutate } = useRegisterMutation({
     options: {
       onSuccess: () => {
-        toast.success("Stworzono użytkownika");
+        toast.success("Stworzono użytkownika", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+          autoClose: false,
+        });
         navigate("/login");
       },
     },
