@@ -1,7 +1,11 @@
 from django.urls import path
-
-from . import views
+from .views import hello
+# from .views import register_user
+from .views import UserView
+from .views import UsersList
 
 urlpatterns = [
-    path('api/hello/', views.hello),
+    path('hello/', hello),
+    path('register/', UserView.as_view()),
+    path('list/', UsersList.as_view())
 ]

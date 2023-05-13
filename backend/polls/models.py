@@ -1,18 +1,19 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
-class NotesList(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return "List: {}".fomrat(self.name)
+# Create your models here.
     
-class Note(models.Model):
-    title = models.CharField(max_length=50)
-    value = models.CharField(blank=True, max_length=200)
-    date = models.CharField(max_length=10)
-    location = models.CharField(max_length=50)
 
+class User(models.Model):
+    username = models.CharField(max_length=50, unique=True, null=False)
+    email = models.EmailField(unique=True, null=False)
+    password = models.CharField(max_length=50, null=False)
+    confirm_password = models.CharField(max_length=50, null=False)
+    first_name = models.CharField(max_length=50, null=False)
+    last_name= models.CharField(max_length=50, null=True)
+    date_of_birth = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self
+    # class Meta:
+    #     db_table='polls_user'
