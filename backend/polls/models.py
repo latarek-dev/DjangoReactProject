@@ -1,12 +1,15 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
+    
 
 class User(models.Model):
     username = models.CharField(max_length=50, unique=True, null=False)
     email = models.EmailField(unique=True, null=False)
     password = models.CharField(max_length=50, null=False)
+    confirm_password = models.CharField(max_length=50, null=False)
     first_name = models.CharField(max_length=50, null=False)
     last_name= models.CharField(max_length=50, null=True)
     date_of_birth = models.DateField()
