@@ -5,9 +5,9 @@ import { Box, Grid, styled } from "@mui/material";
 
 export default function Layout() {
   return (
-    <StyledGrid container>
+    <StyledGrid container sx={{ marginX: "auto" }}>
       <AppHeader />
-      <Box sx={{ width: "100%" }}>
+      <Box component="main" sx={{ width: "100%" }}>
         <ToastContainer />
         <Outlet />
       </Box>
@@ -19,9 +19,10 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   backgroundColor: `${theme.palette.primary.main}`,
   height: "100%",
   minHeight: "100vh",
-  width: "100%",
+  width: "calc(100%) - 200px",
   boxSizing: "border-box",
-  padding: "1rem 10rem",
+  padding: "2rem 10rem",
+  marginX: "auto 2rem",
   display: "flex",
   alignItems: "flex-start",
 }));

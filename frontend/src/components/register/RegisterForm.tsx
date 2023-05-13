@@ -107,7 +107,7 @@ export default function RegisterForm() {
               onClick={() => navigate(MAIN_ROUTES.LOGIN)}
               color={"#d8c9bc"}
             >
-              Login!
+              Log In!
             </Link>
           </Stack>
         </Stack>
