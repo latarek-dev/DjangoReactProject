@@ -10,7 +10,6 @@ import {
   Link,
 } from "@mui/material";
 
-import { useLoginQuery } from "../../query-hooks/useLoginQuery";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import ActionButton from "../shared/ActionButton";
 import { useRegisterForm } from "../../hooks/forms/useRegisterForm";
@@ -22,32 +21,32 @@ export default function RegisterForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showRepPassword, setShowRepPassword] = useState(false);
 
-  const { register, handleSubmit, errors } = useRegisterForm();
+  const { register, onSubmit, errors } = useRegisterForm();
 
-  const { mutate } = useLoginQuery();
   return (
     <>
       <Box
         noValidate
         component="form"
-        onSubmit={handleSubmit((data) => mutate(data))}
-        sx={{ width: "80%" }}
+        onSubmit={onSubmit}
+        sx={{ width: "90%" }}
       >
         <StyledTypo>Sign Up</StyledTypo>
         <Stack spacing={4} marginTop={6}>
           <TextField
-            {...register("name")}
-            autoComplete="name"
-            label="Name"
-            error={!!errors.name}
-            helperText={errors.name?.message}
-          />
-          <TextField
-            {...register("login")}
+            {...register("username")}
             autoComplete="username"
             label="Username"
-            error={!!errors.login}
-            helperText={errors.login?.message}
+            error={!!errors.username}
+            helperText={errors.username?.message}
+          />
+          <TextField
+            {...register("email")}
+            autoComplete="Email"
+            label="Email"
+            type="email"
+            error={!!errors.email}
+            helperText={errors.email?.message}
           />
           <TextField
             {...register("password")}
@@ -71,12 +70,12 @@ export default function RegisterForm() {
             }}
           />
           <TextField
-            {...register("repeatPassword")}
-            autoComplete="current-password"
-            label="Password"
-            error={!!errors.repeatPassword}
+            {...register("confirm_password")}
+            autoComplete="confirm_password"
+            label="Confirm Password"
+            error={!!errors.confirm_password}
             type={showRepPassword ? "text" : "password"}
-            helperText={errors.repeatPassword?.message}
+            helperText={errors.confirm_password?.message}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -90,6 +89,27 @@ export default function RegisterForm() {
                 </InputAdornment>
               ),
             }}
+          />
+          <TextField
+            {...register("first_name")}
+            autoComplete="first_name"
+            label="First Name"
+            error={!!errors.first_name}
+            helperText={errors.first_name?.message}
+          />
+          <TextField
+            {...register("last_name")}
+            autoComplete="last_name"
+            label="Last Name"
+            error={!!errors.last_name}
+            helperText={errors.last_name?.message}
+          />
+          <TextField
+            {...register("date_of_birth")}
+            autoComplete="date_of_birth"
+            type="date"
+            error={!!errors.date_of_birth}
+            helperText={errors.date_of_birth?.message}
           />
           <Box alignSelf="center">
             <ActionButton actionText="Sign Up" variant="contained" />

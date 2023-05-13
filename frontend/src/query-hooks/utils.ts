@@ -18,6 +18,7 @@ export const deleteData = async <T = unknown>(
   return response.data;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const upsertData = async <T = any>(
   method: "post" | "put" | "patch",
   url: string,
