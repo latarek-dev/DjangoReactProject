@@ -1,20 +1,28 @@
-import Grid from "@mui/material/Grid";
 import { Outlet } from "react-router-dom";
-import Header from "./header/Header";
-import Sidebar from "../shared/Sidebar";
+import { ToastContainer } from "react-toastify";
+import AppHeader from "./app-header/AppHeader";
+import { Box, Grid, styled } from "@mui/material";
 
 export default function Layout() {
   return (
-    <Grid container sx={{ height: "100%", width: "100%", margin: "0 auto" }}>
-      <Grid item sx={{ width: "100%" }}>
-        <Grid sx={{ width: "100%" }}>
-          <Header />
-          <Sidebar />
-        </Grid>
-        <Grid paddingBottom={4} sx={{ width: "100%" }}>
-          <Outlet />
-        </Grid>
-      </Grid>
-    </Grid>
+    <StyledGrid container sx={{ marginX: "auto" }}>
+      <AppHeader />
+      <Box component="main" sx={{ width: "100%" }}>
+        <ToastContainer />
+        <Outlet />
+      </Box>
+    </StyledGrid>
   );
 }
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  backgroundColor: `${theme.palette.primary.main}`,
+  height: "100%",
+  minHeight: "100vh",
+  width: "calc(100%) - 200px",
+  boxSizing: "border-box",
+  padding: "2rem 10rem",
+  marginX: "auto 2rem",
+  display: "flex",
+  alignItems: "flex-start",
+}));

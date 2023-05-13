@@ -1,26 +1,37 @@
-import Layout from "../components/layout/Layout";
-import HomePage from "../pages/home/HomePage";
-
 import { useRoutes } from "react-router-dom";
 
-import { PROJECT_ROUTES } from "./routes-config";
-import SignUp from "../pages/account/SignUp";
+import { MAIN_ROUTES } from "./routes-config";
+import Layout from "../components/layout/Layout";
+import LoginPage from "../pages/login/LoginPage";
+import HomePage from "../pages/homepage/HomePage";
+import RegisterPage from "../pages/register/RegisterPage";
+import NotesPage from "../pages/notespage/NotesPage";
 
-export default function Router() {
+function Router() {
   return useRoutes([
     {
       path: "/",
       element: <Layout />,
       children: [
         {
-          path: PROJECT_ROUTES.MAIN,
+          path: MAIN_ROUTES.MAIN,
           element: <HomePage />,
         },
         {
-          path: PROJECT_ROUTES.SIGNUP,
-          element: <SignUp />,
+          path: MAIN_ROUTES.LOGIN,
+          element: <LoginPage />,
+        },
+        {
+          path: MAIN_ROUTES.SIGNUP,
+          element: <RegisterPage />,
+        },
+        {
+          path: MAIN_ROUTES.NOTES,
+          element: <NotesPage />,
         },
       ],
     },
   ]);
 }
+
+export default Router;
