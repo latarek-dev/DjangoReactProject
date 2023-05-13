@@ -1,22 +1,18 @@
 from django.db import models
 
 
-# Create your models here.
-class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+class NotesList(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return "List: {}".fomrat(self.name)
+    
+class Note(models.Model):
+    title = models.CharField(max_length=50)
+    value = models.CharField(blank=True)
+    date = models.CharField(max_length=10)
+    location = models.CharField()
 
 
-class Choice(models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
-
-
-class Todo(models.Model):
-   title = models.CharField(max_length=100)
-   description = models.TextField()
-   completed = models.BooleanField(default=False)
-
-   def _str_(self):
-     return self.title
+    def __str__(self):
+        return self
