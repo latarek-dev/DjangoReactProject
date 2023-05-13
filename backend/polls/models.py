@@ -9,9 +9,9 @@ class NotesList(models.Model):
     
 class Note(models.Model):
     title = models.CharField(max_length=50)
-    value = models.CharField(blank=True)
+    value = models.CharField(blank=True, max_length=200)
     date = models.CharField(max_length=10)
-    location = models.CharField()
+    location = models.CharField(max_length=50)
 
 
     def __str__(self):
