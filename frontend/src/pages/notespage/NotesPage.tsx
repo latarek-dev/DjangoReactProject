@@ -8,6 +8,14 @@ import {
   Typography,
 } from "@mui/material";
 
+export type Note = {
+  id: number;
+  title: string;
+  value: string;
+  date: string;
+  location: string;
+};
+
 const notes = [
   {
     id: 1,
