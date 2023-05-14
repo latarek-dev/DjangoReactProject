@@ -7,6 +7,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { EditNoteModal } from "../../components/modals/EditNoteModal/EditNoteModal";
+import { useState } from "react";
 
 export type Note = {
   id: number;
@@ -52,6 +54,8 @@ const notes = [
 ];
 
 export default function NotesPage() {
+  const [noteData, setNoteData] = useState<Note | null>();
+
   return (
     <Box>
       <Stack direction="column">
@@ -70,7 +74,7 @@ export default function NotesPage() {
                   {note.title}
                 </Typography>
                 <Stack direction={"row"} sx={{ mr: "2rem" }}>
-                  <IconButton>
+                  <IconButton onClick={() => setNoteData(notes[note.id])}>
                     <Edit />
                   </IconButton>
                   <IconButton>
@@ -87,6 +91,13 @@ export default function NotesPage() {
           </Card>
         ))}
       </Stack>
+      {noteData && (
+        <EditNoteModal
+          onClose={() => setNoteData(null)}
+          open={!!noteData}
+          selectedNote={noteData}
+        />
+      )}
     </Box>
   );
 }
