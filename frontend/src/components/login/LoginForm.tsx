@@ -36,11 +36,11 @@ export default function LoginForm() {
         <StyledTypo>Login</StyledTypo>
         <Stack spacing={4} marginTop={6}>
           <TextField
-            {...register("login")}
+            {...register("username")}
             autoComplete="username"
             label="Username"
-            error={!!errors.login}
-            helperText={errors.login?.message}
+            error={!!errors.username}
+            helperText={errors.username?.message}
           />
           <TextField
             {...register("password")}

@@ -6,6 +6,7 @@ import LoginPage from "../pages/login/LoginPage";
 import HomePage from "../pages/homepage/HomePage";
 import RegisterPage from "../pages/register/RegisterPage";
 import NotesPage from "../pages/notespage/NotesPage";
+import AccountPage from "../pages/account/AccountPage";
 
 function Router() {
   return useRoutes([
@@ -28,6 +29,10 @@ function Router() {
         {
           path: MAIN_ROUTES.NOTES,
           element: <NotesPage />,
+        },
+        {
+          path: MAIN_ROUTES.ACCOUNT,
+          element: <AccountPage />,
         },
       ],
     },

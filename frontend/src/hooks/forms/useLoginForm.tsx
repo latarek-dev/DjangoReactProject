@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { requiredMessage } from "./useRegisterForm";
 
 const validationSchema = Yup.object({
-  login: Yup.string().required(requiredMessage),
+  username: Yup.string().required(requiredMessage),
   password: Yup.string().required(requiredMessage),
 });
 

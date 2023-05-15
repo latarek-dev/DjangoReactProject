@@ -3,9 +3,12 @@ import ActionButton from "../../components/shared/ActionButton";
 import { useNavigate } from "react-router-dom";
 import { MAIN_ROUTES } from "../../routes/routes-config";
 import HeroSVG from "../../@assets/blob.svg";
+import { useAuthContext } from "../../context/AuthContext";
 
 export default function HomePage() {
   const navigate = useNavigate();
+
+  const { user } = useAuthContext();
 
   return (
     <Box>
@@ -15,19 +18,32 @@ export default function HomePage() {
         justifyContent={"space-between"}
       >
         <Box>
-          <StyledHero>Django React Web App</StyledHero>
+          <StyledHero>
+            {user ? `Welcome, ${user.username}` : "Django React Web App"}
+          </StyledHero>
           <StyledTypo>Practical use of python course</StyledTypo>
           <Stack direction={"row"} spacing={4}>
-            <ActionButton
-              actionText="Login"
-              onClickAction={() => navigate(MAIN_ROUTES.LOGIN)}
-              variant="contained"
-            />
-            <ActionButton
-              actionText="Sign Up"
-              onClickAction={() => navigate(MAIN_ROUTES.SIGNUP)}
-              variant="outlined"
-            />
+            {!user && (
+              <>
+                <ActionButton
+                  actionText="Login"
+                  onClickAction={() => navigate(MAIN_ROUTES.LOGIN)}
+                  variant="contained"
+                />
+                <ActionButton
+                  actionText="Sign Up"
+                  onClickAction={() => navigate(MAIN_ROUTES.SIGNUP)}
+                  variant="outlined"
+                />
+              </>
+            )}
+            {user && (
+              <ActionButton
+                actionText="View notes"
+                onClickAction={() => navigate(MAIN_ROUTES.NOTES)}
+                variant="contained"
+              />
+            )}
           </Stack>
         </Box>
         <img src={HeroSVG} height={"700px"} />

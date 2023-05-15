@@ -2,9 +2,12 @@ import { Stack, styled } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import ActionButton from "../../shared/ActionButton";
 import { MAIN_ROUTES } from "../../../routes/routes-config";
+import { useAuthContext } from "../../../context/AuthContext";
 
 export default function AppHeader() {
   const navigate = useNavigate();
+
+  const { user, logout } = useAuthContext();
 
   return (
     <StyledStack>
@@ -12,14 +15,19 @@ export default function AppHeader() {
         <StyledLogo>DJANGOREACT</StyledLogo>
       </Link>
       <Stack direction={"row"} spacing={4}>
-        <ActionButton
-          actionText="About Us"
-          onClickAction={() => navigate(MAIN_ROUTES.LOGIN)}
-        />
-        <ActionButton
-          actionText="Notes"
-          onClickAction={() => navigate(MAIN_ROUTES.NOTES)}
-        />
+        {user && (
+          <>
+            <ActionButton
+              actionText="Account"
+              onClickAction={() => navigate(MAIN_ROUTES.ACCOUNT)}
+            />
+            <ActionButton
+              actionText="Notes"
+              onClickAction={() => navigate(MAIN_ROUTES.NOTES)}
+            />
+            <ActionButton actionText="Log out" onClickAction={logout} />
+          </>
+        )}
       </Stack>
     </StyledStack>
   );

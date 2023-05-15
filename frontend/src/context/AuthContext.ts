@@ -2,8 +2,9 @@ import createGenericContext from "../utils/createGenericContext";
 
 export type User = {
   id: string;
-  login: string;
-  name: string;
+  username: string;
+  email: string;
+  created_at: string;
 };
 
 type AuthContextType = {
