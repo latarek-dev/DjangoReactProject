@@ -5,8 +5,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer
 from .serializers import UserLoginSerializer
-# from .serializers import LoginSerializer
-from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from .models import User
 

@@ -1,10 +1,6 @@
 from rest_framework import serializers
 from .models import User
-from rest_framework.authentication import authenticate
 from rest_framework.generics import GenericAPIView
-from rest_framework.response import Response
-from django.http import JsonResponse
-import json
 from rest_framework import status
 
 
@@ -29,23 +25,14 @@ class UserLoginSerializer(serializers.Serializer):
     password = serializers.CharField(max_length=128, write_only=True)
 
     def validate(self, attrs):
+        # pobiera wartość z pól username i password
         username = attrs.get('username')
         password = attrs.get('password')
-
-        # user = authenticate(username=username)
-        # print("user1: ",user)
         try:
+            #sprawdzanie czy obiekt istnieje w bazie, jeśli tak, to wrzucamy do słownika cały obiekt
             user2 = User.objects.get(username=username, password=password)
-            user_data={
-            'id': user2.id,
-            'username': user2.username,
-            'email': user2.email,
-            'password':user2.password,
-            'created_at': str(user2.created_at)
-            }
-
             attrs['user23'] = user2
             return attrs
-        
+            # jeśli nie istnieje, to wyrzucamy błąd
         except User.DoesNotExist:
             raise serializers.ValidationError('Niepoprawne dane logowania.')
