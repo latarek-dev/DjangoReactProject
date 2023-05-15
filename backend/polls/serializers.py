@@ -14,11 +14,10 @@ from django.utils import timezone
 
 class UserSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)
-    created_at = serializers.DateTimeField(read_only=True, default=serializers.CreateOnlyDefault(timezone.now))
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password', 'confirm_password', 'created_at')
+        fields = ('id', 'username', 'email', 'password', 'confirm_password')
 
     def validate(self, attrs):
         if attrs['password'] != attrs['confirm_password']:
