@@ -11,6 +11,3 @@ class User(models.Model):
     password = models.CharField(max_length=50, null=False)
     confirm_password = models.CharField(max_length=50, null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-
-    # class Meta:
-    #     db_table='polls_user'
