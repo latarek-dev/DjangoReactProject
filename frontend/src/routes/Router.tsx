@@ -5,8 +5,8 @@ import Layout from "../components/layout/Layout";
 import LoginPage from "../pages/login/LoginPage";
 import HomePage from "../pages/homepage/HomePage";
 import RegisterPage from "../pages/register/RegisterPage";
-import NotesPage from "../pages/notespage/NotesPage";
 import AccountPage from "../pages/account/AccountPage";
+import NewsPage from "../pages/newspage/NewsPage";
 
 function Router() {
   return useRoutes([
@@ -27,8 +27,8 @@ function Router() {
           element: <RegisterPage />,
         },
         {
-          path: MAIN_ROUTES.NOTES,
-          element: <NotesPage />,
+          path: MAIN_ROUTES.NEWS,
+          element: <NewsPage />,
         },
         {
           path: MAIN_ROUTES.ACCOUNT,

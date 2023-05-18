@@ -3,5 +3,5 @@ export const MAIN_ROUTES = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   ACCOUNT: "/account",
-  NOTES: "/notes"
+  NEWS: "/news"
 };

@@ -22,8 +22,8 @@ export default function AppHeader() {
               onClickAction={() => navigate(MAIN_ROUTES.ACCOUNT)}
             />
             <ActionButton
-              actionText="Notes"
-              onClickAction={() => navigate(MAIN_ROUTES.NOTES)}
+              actionText="News"
+              onClickAction={() => navigate(MAIN_ROUTES.NEWS)}
             />
             <ActionButton actionText="Log out" onClickAction={logout} />
           </>

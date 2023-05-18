@@ -39,8 +39,8 @@ export default function HomePage() {
             )}
             {user && (
               <ActionButton
-                actionText="View notes"
-                onClickAction={() => navigate(MAIN_ROUTES.NOTES)}
+                actionText="View news"
+                onClickAction={() => navigate(MAIN_ROUTES.NEWS)}
                 variant="contained"
               />
             )}

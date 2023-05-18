@@ -7,10 +7,13 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { EditNoteModal } from "../../components/modals/EditNoteModal/EditNoteModal";
+import { EditNewsModal } from "../../components/modals/EditNewsModal/EditNewsModal";
 import { useState } from "react";
+import { DeleteNewsModal } from "../../components/modals/DeleteNewsModal/DeleteNewsModal";
+import ActionButton from "../../components/shared/ActionButton";
+import { AddNewsModal } from "../../components/modals/AddNewsModal/AddNewsModal";
 
-export type Note = {
+export type News = {
   id: number;
   title: string;
   value: string;
@@ -53,14 +56,22 @@ const notes = [
   },
 ];
 
-export default function NotesPage() {
-  const [noteData, setNoteData] = useState<Note | null>();
+export default function NewsPage() {
+  const [newsData, setNewsData] = useState<News | null>();
+  const [addNewsOpen, setAddNewsOpen] = useState(false);
+  const [deleteNewsId, setDeleteNewsId] = useState<string | null>(null);
 
   return (
     <Box>
+      <ActionButton
+        actionText="Add news"
+        variant="contained"
+        sx={{ margin: "1rem" }}
+        onClick={() => setAddNewsOpen(true)}
+      />
       <Stack direction="column">
-        {notes.map((note) => (
-          <Card sx={{ margin: "1rem" }}>
+        {notes.map((note, index) => (
+          <Card key={index} sx={{ margin: "1rem" }}>
             <CardContent>
               <Typography
                 sx={{ fontSize: 14 }}
@@ -74,10 +85,12 @@ export default function NotesPage() {
                   {note.title}
                 </Typography>
                 <Stack direction={"row"} sx={{ mr: "2rem" }}>
-                  <IconButton onClick={() => setNoteData(notes[note.id])}>
+                  <IconButton onClick={() => setNewsData(notes[note.id])}>
                     <Edit />
                   </IconButton>
-                  <IconButton>
+                  <IconButton
+                    onClick={() => setDeleteNewsId(notes[note.id].toString())}
+                  >
                     <Delete />
                   </IconButton>
                 </Stack>
@@ -91,13 +104,27 @@ export default function NotesPage() {
           </Card>
         ))}
       </Stack>
-      {noteData && (
-        <EditNoteModal
-          onClose={() => setNoteData(null)}
-          open={!!noteData}
-          selectedNote={noteData}
+      {addNewsOpen && (
+        <AddNewsModal
+          open={addNewsOpen}
+          onClose={() => setAddNewsOpen(false)}
         />
       )}
+      {newsData && (
+        <EditNewsModal
+          onClose={() => setNewsData(null)}
+          open={!!newsData}
+          selectedNews={newsData}
+        />
+      )}
+      <DeleteNewsModal
+        newsId={deleteNewsId}
+        onClose={() => setDeleteNewsId(null)}
+        onSuccess={() => {
+          setDeleteNewsId(null);
+          // TODO refetch() - ADD WHEN ENDPOINT CREATED
+        }}
+      />
     </Box>
   );
 }

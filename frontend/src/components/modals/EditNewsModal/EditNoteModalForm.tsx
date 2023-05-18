@@ -1,12 +1,12 @@
 import { Grid, TextField, Typography } from "@mui/material";
-import { Note } from "../../../pages/notespage/NotesPage";
+import { News } from "../../../pages/newspage/NewsPage";
 
-type EditNoteModalFormProps = {
-  data: Note;
+type EditNewsModalFormProps = {
+  data: News;
   onSuccess?: () => void;
 };
 
-export default function EditNoteModalForm({ data }: EditNoteModalFormProps) {
+export default function EditNewsModalForm({ data }: EditNewsModalFormProps) {
   return (
     <form>
       <Grid container spacing={2} alignItems="center" marginTop={2}>
