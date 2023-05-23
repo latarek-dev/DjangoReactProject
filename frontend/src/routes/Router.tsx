@@ -5,7 +5,6 @@ import Layout from "../components/layout/Layout";
 import LoginPage from "../pages/login/LoginPage";
 import HomePage from "../pages/homepage/HomePage";
 import RegisterPage from "../pages/register/RegisterPage";
-import AccountPage from "../pages/account/AccountPage";
 import NewsPage from "../pages/newspage/NewsPage";
 
 function Router() {
@@ -29,10 +28,6 @@ function Router() {
         {
           path: MAIN_ROUTES.NEWS,
           element: <NewsPage />,
-        },
-        {
-          path: MAIN_ROUTES.ACCOUNT,
-          element: <AccountPage />,
         },
       ],
     },
