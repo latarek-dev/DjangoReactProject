@@ -2,9 +2,20 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "./utils"
 
 export type Post = {
-  id: number;
-  date: string;
-  value: string;
+    author: string;
+    content: null;
+    description: null
+    publishedAt: string;
+    source: {id: string, name: string}
+    title: string;
+    url: string;
+    urlToImage: string;
+}
+
+export type News = {
+    status: string;
+    totalResults: number;
+    articles: Post[];
 };
 
 type useGetNewsQueryType = {
@@ -14,10 +25,10 @@ type useGetNewsQueryType = {
 
 export const useGetNewsQuery = ({countryId, categoryId}: useGetNewsQueryType) => {
 
-    const queryFn = fetchData<Post[]>(`http://127.0.0.1:8000/polls/top-headlines/?country=${countryId}&category=${categoryId}`)
+    const queryFn = fetchData<News>(`http://127.0.0.1:8000/polls/top-headlines/?country=${countryId}&category=${categoryId}`)
 
     return useQuery({
         queryFn,
-        queryKey: ["newsPosts"]
+        queryKey: ["newsPosts", countryId, categoryId]
     })
 }

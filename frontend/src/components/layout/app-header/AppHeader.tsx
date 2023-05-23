@@ -18,10 +18,6 @@ export default function AppHeader() {
         {user && (
           <>
             <ActionButton
-              actionText="Account"
-              onClickAction={() => navigate(MAIN_ROUTES.ACCOUNT)}
-            />
-            <ActionButton
               actionText="News"
               onClickAction={() => navigate(MAIN_ROUTES.NEWS)}
             />
