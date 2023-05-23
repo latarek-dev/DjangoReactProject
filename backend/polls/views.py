@@ -7,6 +7,39 @@ from . import serializers
 from django.contrib.auth import login, logout
 from rest_framework import status
 from rest_framework.views import APIView
+import json
+import requests
+
+class TopHeadlinesView(APIView):
+    def get(self, request):
+        api_key = 'e53df72e27134c8caa54d1591ba1456e'
+        country = request.GET.get('country')
+        category = request.GET.get('category')
+        page_size = 20
+
+        params = {
+            'apiKey': api_key,
+            'country': country,
+            'category': category,
+            'pageSize': page_size,
+        }
+        print(params)
+
+        response = requests.get('https://newsapi.org/v2/top-headlines', params=params)
+
+        data = response.json()
+
+        default_image_url = 'https://static.vecteezy.com/system/resources/thumbnails/004/216/831/original/3d-world-news-background-loop-free-video.jpg'
+
+        if response.status_code == 200:
+            articles = data.get('articles', [])
+            for article in articles:
+                if article["urlToImage"] is None:
+                    article["urlToImage"] = default_image_url
+        else:
+            print('Wystąpił błąd:', response.status_code)
+
+        return Response(data)
 
 
 class UserView(generics.CreateAPIView):
@@ -15,7 +48,6 @@ class UserView(generics.CreateAPIView):
 
 
 class UserLoginView(generics.GenericAPIView):
-    # This view should be accessible also for unauthenticated users.
     serializer_class = serializers.LoginSerializer
 
     def post(self, request, format=None):
